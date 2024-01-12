@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/login.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+<div class="content">
+        {% if messages %}
+        <div class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{message.tags}}"{% endif %}>
+            {{message}}
+        </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+<section id="login-form">
+    <h2>Login</h2>
+    <form action="{% url 'login' %}" method='POST'>
+        {% csrf_token %}
+        {% for form_field in form %}
+        <div class="form-control">
+        {{form_field.label_tag}}
+        {{form_field}}
+        <div class="error-messages">{{form_field.errors}}</div>
+        </div>
+        {% endfor %}
+        <button class="login-button">Login</button>
+    </form>
+</section>
+<div id="register-link" class="text-center">
+    <p class="text">Don't have an account? <a href="{% url 'register' %}" class= "register-link">Register</a></p> 
+</div>
+</div>
+{% endblock content %}

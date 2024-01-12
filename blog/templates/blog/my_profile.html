@@ -1,0 +1,82 @@
+{% extends "second_base.html" %}
+{% load static %}
+
+{% block title %}My Profile{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/my_profile.css" %}">
+{% endblock css_files %}
+
+{% block content %}
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div {% if message.tags %} class="{{message.tags}}"{% endif %}>
+    {{message}}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+<div class="content-author-details">
+    <section id="author-box">
+        <div class="return-button">
+        <a href="{% url "edit-profile" %}"><i class="fa-solid fa-gear"></i></a>
+        <a href="{% url 'second_home'%}"><i class="fa-solid fa-rotate-left"></i></a>
+    </div>
+    <div class="profile-content">
+        <!-- Profile Image -->
+        <div class="profile-image">
+            <img src="{{ image.image.url }}" alt="Author's profile image">
+        </div>
+
+        <!-- User Details -->
+        <div class="profile-details">
+            <h2>{{request.user.username}}</h2>
+            <div class="data-row">
+                <span class="label">First Name:</span>
+                <span class="value">{{ request.user.first_name|capfirst }}</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Last Name:</span>
+                <span class="value">{{ request.user.last_name|capfirst }}</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Email:</span>
+                <span class="value"><a href="mailto:{{request.user.email}}">{{ request.user.email }}</a></span>
+            </div>
+        </div>
+    </div>
+    </section>
+</div>
+<div class="content-posts">
+    <section id = 'stored_posts'>
+        {% if not posts %}
+        <div id="no-posts">
+        <p>Sorry, you dont have any posts!</p>
+        </div>
+        {% else %}
+        <div id='stored-title'>
+            <h2>My Posts</h2>
+            </div>
+        <ul>
+            {% for post in posts %}
+            <li>
+                <article class='post'> 
+                    <a href="{% url 'myblog-detail-page' post.slug %}">
+                        <img src="{{post.image.url}}" alt="{{ post.title }}">
+                        <div class='post__content'>
+                            <h3>{{post.title}}</h3>
+                            <p>{{post.excerpt}}</p>
+                            <p>Written By: {{post.author}}</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+</div>
+</div>
+</div>
+{% endblock content %}

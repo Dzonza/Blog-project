@@ -1,0 +1,111 @@
+
+#content-edit {
+    background-color: #f5f0f0;
+    min-height: 100vh;
+    font:inherit;
+    padding:2rem 0;
+}
+/* Messages styling */
+.messages {
+    padding: 0px 20px 30px 20px;
+
+}
+.messages .error {
+    color: red;
+    background-color: #fdd;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid red;
+    border-radius: 6px;
+  }
+  
+.messages .success {
+    color: green;
+    background-color: #dfd;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid green;
+    border-radius: 6px;
+  }
+
+/* Form Styling */
+#edit-form {
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#edit-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+#edit-form input[type="text"],
+#edit-form input[type="file"],
+#edit-form textarea,
+#edit-form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    font:inherit;
+}
+
+#edit-form input[type="text"]:focus,
+#edit-form input[type="file"]:focus
+#edit-form textarea:focus,
+#edit-form select:focus {
+    border-color: #2e2e2e;
+    outline: none;
+}
+
+
+#edit-form button,
+#edit-form .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;  
+    display: inline-block; 
+    width: 120px;  
+    text-align: center; 
+    transition: background 0.3s ease;
+    cursor:pointer;
+}
+
+#edit-form button {
+    background-color: #5a67d8;
+    color: white;
+}
+
+#edit-form button:hover {
+    background-color: #434bc0;
+}
+
+#edit-form .cancel-button {
+    background-color: #e53e3e;
+    color: white;
+    text-decoration: none;
+}
+
+#edit-form .cancel-button:hover {
+    background-color: #c53030;
+}
+#edit-form button,
+#edit-form .cancel-button {
+    vertical-align: middle;
+}
+
+#id__image {
+    margin-bottom: 20px;
+}

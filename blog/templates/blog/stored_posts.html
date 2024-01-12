@@ -1,0 +1,40 @@
+{% extends 'second_base.html' %}
+{% load static %}
+
+{% block title %}
+My Stored Posts
+{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/stored_posts.css' %}">{% endblock css_files %}
+{% block content %}
+<div class="content">
+<section id = 'stored_posts'>
+    {% if not has_posts %}
+    <div id="no-posts">
+    <p>Sorry, you didnt save any posts!</p>
+    </div>
+    {% else %}
+    <div id='stored-title'>
+        <h2>Stored Posts</h2>
+        </div>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <article class='post'> 
+                <a href="{% url 'myblog-detail-page' post.slug %}">
+                    <img src="{{post.image.url}}" alt="{{ post.title }}">
+                    <div class='post__content'>
+                        <h3>{{post.title}}</h3>
+                        <p>{{post.excerpt}}</p>
+                        <p>Written By: {{post.author}}</p>
+                    </div>
+                </a>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+</div>
+{% endblock content %}

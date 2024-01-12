@@ -1,0 +1,33 @@
+{% extends 'second_base.html' %}
+{% load static %}
+
+{% block title %}{{post.title}}{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/edit-post.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+<div id="content-edit">
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div {% if message.tags %} class="{{message.tags}}"{% endif %}>
+    {{message}}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+<section id="edit-form">
+    <form action="{% url 'edit-post' post.slug %}" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for edit_form in form %}
+        {{edit_form.label_tag}}
+        {{edit_form}}
+        {% endfor %}
+        <button>Edit</button>
+        <a href="{% url 'myblog-detail-page' post.slug%}" class="cancel-button">Cancel</a>
+</form>
+</section>
+</div>
+{% endblock content %}

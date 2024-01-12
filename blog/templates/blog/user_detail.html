@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Author-{{post.author}}{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/user_detail.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+<div class="content">
+    <div class="author-box">
+        <div class="return-button">
+            <a href="{% url 'detail-page' post.slug %}"><i class="fa-solid fa-rotate-left"></i></a>
+        </div>
+        <div class="profile-content">
+            <!-- Profile Image -->
+            <div class="profile-image">
+                <img src="{{ image.image.url }}" alt="Author's profile image">
+            </div>
+
+            <!-- User Details -->
+            <div class="profile-details">
+                <h2>{{post.author}}</h2>
+                <div class="data-row">
+                    <span class="label">First Name:</span>
+                    <span class="value">{{ post.author.first_name|capfirst }}</span>
+                </div>
+                <div class="data-row">
+                    <span class="label">Last Name:</span>
+                    <span class="value">{{ post.author.last_name|capfirst }}</span>
+                </div>
+                <div class="data-row">
+                    <span class="label">Email:</span>
+                    <span class="value"><a href="mailto:{{post.author.email}}">{{ post.author.email }}</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

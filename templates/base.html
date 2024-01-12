@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+    {% block css_files %}{% endblock css_files %}
+</head>
+<body>
+    <header id='main-navigation'>
+        <h1><a href="{% url 'home' %}">Blog</a></h1>
+        <nav>
+            <a href="{% url 'home' %}#big-picture">Home</a>
+            <a href="{% url 'home' %}#all-posts">All Posts</a>
+            <a href="{% url 'home' %}#contact">Contact</a>
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+        </nav>
+    </header>
+    <div class="main-content">
+    {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

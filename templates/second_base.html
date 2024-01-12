@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+    {% block css_files %}{% endblock css_files %}
+</head>
+<body>
+    <header id='main-navigation'>
+        <h1><a href="{% url 'second_home' %}">Blog</a></h1>
+        <nav>
+            <a href="{% url 'second_home' %}#all-posts">All Posts</a>
+            <a href="{% url 'read-later' %}">Stored Posts</a>
+            <a href="{% url 'create-post' %}">Create Post</a>
+            <a href="{% url "my-profile" %}">My Profile</a>
+            <a href="{% url 'second_home' %}#contact">Contact</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </header>
+    <div class="main-content">
+    {% block content %}{% endblock content %}
+    </div>
+    <script src="{% static 'blog/post-detail.js' %}"></script>
+</body>
+</html>

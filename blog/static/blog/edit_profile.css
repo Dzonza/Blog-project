@@ -1,0 +1,111 @@
+.content {
+    background-color: #f5f0f0;
+    min-height: 110vh;
+    padding: 2rem 0;
+}
+section#edit-profile-form {
+    font:inherit;
+    width: 450px;
+    margin: 0 auto 1.5rem auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+#edit-profile-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-control input:focus {
+    border-color: #444;
+}
+
+.form-control .errorlist {
+    color: #d9534f;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+#edit-profile-form button {
+    font:inherit;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 3rem;
+}
+
+#edit-profile-form button:hover {
+    background-color: #0056b3;
+}
+
+#edit-profile-form a {
+    font:inherit;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+#edit-profile-form a:hover {
+    background-color: #c53030;
+}
+.messages {
+    padding: 0px 20px 30px 20px;
+}
+.messages .error {
+    color: red;
+    background-color: #fdd;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid red;
+    border-radius: 6px;
+  }
+  
+.messages .success {
+    color: green;
+    background-color: #dfd;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid green;
+    border-radius: 6px;
+  }

@@ -1,0 +1,74 @@
+{% extends 'second_base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div {% if message.tags %} class="{{message.tags}}"{% endif %}>
+    {{message}}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+<section id="big-picture">
+    <div class="image-container">
+    <img src="{% static 'blog/images/library.jpg' %}" alt="Background Photo">
+</div>
+    <div class="text-container">
+        <h1>Marcus Aurelius</h1>
+        <p>“Do not act as if you were going to live ten thousand years. Death hangs over you. While you live, while it is in your power, be good.”</p>
+</div>
+</section>
+<div id="background-allPosts">
+<section id='all-posts'>
+{% if posts %}
+<div id='post-title'>
+<h2>All Posts</h2>
+<p>“A reader lives a thousand lives before he dies . . . The man who never reads lives only one.”</p>
+</div>
+<ul>
+    {% for post in posts %}
+    <li>
+        <article class='post'> 
+            <a href="{% url 'myblog-detail-page' post.slug %}">
+                <img src="{{post.image.url}}" alt="{{ post.title }}">
+                <div class='post__content'>
+                    <h3>{{post.title}}</h3>
+                    <p>{{post.excerpt}}</p>
+                    <p>Written By: {{post.author}}</p>
+                </div>
+            </a>
+        </article>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<div id="no-posts">
+<p>Sorry, there are no posts to show.</p>
+</div>
+{% endif %}
+</section>
+</div>
+
+<div id='background-contact'>
+<section id='contact'>
+<div id='contact-block'>
+<h2>Contact</h2>
+<p>Feel free to contact us anytime!</p>
+</div>
+<a href="mailto:test@test.com">
+<div id="icon">
+<i class="fa-solid fa-envelope-open-text"></i>
+</div>
+</a>
+</div>
+</section>
+
+{% endblock content %}

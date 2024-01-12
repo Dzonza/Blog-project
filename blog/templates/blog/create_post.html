@@ -1,0 +1,32 @@
+{% extends 'second_base.html' %}
+{% load static %}
+{% block title %}Create Post{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/edit-post.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+<div id="content-edit">
+    {% if messages %}
+    <div class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{message.tags}}"{% endif %}>
+        {{message}}
+    </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+    <section id="edit-form">
+    <form action="{% url 'create-post' %}" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for create_form in form %}
+        {{create_form.label_tag}}
+        {{create_form}}
+        {% endfor %}
+        <button>Create</button>
+        <a href="{% url 'second_home' %}" class="cancel-button">Cancel</a>
+    </form>
+    </section>
+    </div>
+{% endblock content %}

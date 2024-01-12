@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock title %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/register.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+<div class="content">
+{% if messages %}
+<div class="messages">
+{% for message in messages %}
+<div {% if message.tags %} class="{{message.tags}}"{% endif %}>
+    {{message}}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+<section id='register-form'>
+    <h2>Register</h2>
+    <form action="{% url 'register' %}" method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for form_field in form %}
+    <div class="form-control">
+        {{form_field.label_tag}}
+        {{form_field}}
+        {{form_field.errors}}
+    </div>
+    {% endfor %}
+    <div class="form-control">
+            {{ user_image.image.label_tag }}
+            {{ user_image.image }}
+            {{ user_image.image.errors }}
+    </div>
+    <button>Register</button>
+</form>
+</section>
+<div id="login-link" class="text-center">
+   <p class="text">Already have an account? <a href="{% url 'login' %}" class="login-link">Login</a></p> 
+</div>
+</div>
+{% endblock content %}
